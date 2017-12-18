@@ -5,6 +5,7 @@ const BearerStrategy = passportBearer.Strategy;
 const BasicStrategy = passportHttp.BasicStrategy;
 const User = require('../models/user');
 const Client = require('../models/client');
+const Token = require('../models/token');
 
 // Locks down user endpoints
 passport.use(new BasicStrategy(
@@ -63,6 +64,6 @@ passport.use(new BearerStrategy(
   }
 ));
 
-exports.isAuthenticated = passport.authenticate('basic', {session: false});
+exports.isAuthenticated = passport.authenticate(['basic', 'bearer'], {session: false});
 exports.isClientAuthenticated = passport.authenticate('client-basic', {session: false});
 exports.isBearerAuthenticated = passport.authenticate('bearer', {session: false});
