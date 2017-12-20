@@ -5,17 +5,12 @@ services:
     image: mongo
     volumes:
       - dbstore:/data/db
-    networks:
-      - auth
   web:
     build: .
     ports:
-      '80:80'
-    networks:
-      - auth
+      - '80:80'
+    depends_on:
+      - db
 
 volumes:
   dbstore:
-
-networks:
-  auth:

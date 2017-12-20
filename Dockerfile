@@ -1,11 +1,8 @@
-FROM alpine
+FROM node
 
 WORKDIR /web
 
-RUN apk update \
-  && apk add nodejs nodejs-npm git \
-  && git clone https://github.com/djaustin/oauth-example.git . \
-  && apk del git \
+RUN git clone https://github.com/djaustin/oauth-example.git . \
   && npm install
 
 EXPOSE 80

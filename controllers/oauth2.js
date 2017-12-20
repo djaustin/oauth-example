@@ -43,6 +43,7 @@ server.grant(oauth2orize.grant.code(function(client, redirectUri, user, authoriz
   });
 }));
 
+// NOTE: Check these values for null 
 server.exchange(oauth2orize.exchange.code(function(client, code, redirectUri, callback){
   Code.findOne({value: code}, function(err, authCode){
     // Return error if error occurred while trying to find the code
