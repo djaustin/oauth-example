@@ -21,8 +21,10 @@ server.deserializeClient(function(id, callback){
   });
 });
 
+// Generate the middleware for granting authorization codes
+// Given a client, redirectUri, user, authorizationResponse (user's decision after being prompted)
 // NOTE: oauth2orize.grant.code specifies that we are granting an authorization code as opposed to implicit, exchange, or username/password
-server.grant(oauth2orize.grant.code(function(client, redirectUri, user, ares, callback){
+server.grant(oauth2orize.grant.code(function(client, redirectUri, user, authorizationResponse, callback){
   // Create a new Code object from mongoose model
   const code = new Code({
     value: uid(16),
