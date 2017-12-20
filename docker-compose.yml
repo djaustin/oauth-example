@@ -11,6 +11,8 @@ services:
       - '80:80'
     depends_on:
       - db
+    environment:
+      - PORT=80
 
 volumes:
   dbstore:
